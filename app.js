@@ -11,10 +11,10 @@ document.getElementById('js-question').textContent = question;
 
 //問題分の記述をリファクタリング
 const $button = document.getElementsByTagName('button')
+const buttonLength = $button.length;
 //クイズの問題文、選択肢を定義
 const setupQuize = () => {
   let buttonIndex = 0;
-  let buttonLength = $button.length;
   while(buttonIndex < buttonLength){
     //ここに命令
     $button[buttonIndex].textContent = answer[buttonIndex];  
@@ -34,7 +34,6 @@ const clickHandler = (e) => {
 
 //ボタンをクリックしたら正誤判定
 let handleIndex = 0
-const buttonLength = $button.length;
 while(handleIndex < buttonLength){
   $button[handleIndex].addEventListener('click', (e) => {
   clickHandler(e);
