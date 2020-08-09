@@ -1,23 +1,51 @@
-const question = 'ゲーム市場、最も売れたゲーム機は次のうちどれ？';
-const answer = [
-'スーパーファミコン', 
-'プレイステーション２', 
-'ニンテンドースイッチ', 
-'ニンテンドーDS'
+const quize = [
+  {
+    question: 'ゲーム市場、最も売れたゲーム機は次のうちどれ？',
+    answer: [
+      'スーパーファミコン', 
+      'プレイステーション２', 
+      'ニンテンドースイッチ', 
+      'ニンテンドーDS'
+      ],
+    correct: 'ニンテンドーDS'
+  }, {
+    question: 'あなたが入りたい会社は？',
+    answer: [
+      'SES', 
+      '受託系', 
+      '自社開発', 
+      'ものレヴォ'
+    ],
+    correct: 'ものレヴォ'  
+  }, {
+    question: '一番何がネック？',
+    answer: [
+      'スーパーファミコン', 
+      'ECS', 
+      'ニンテンドースイッチ', 
+      'ニンテンドーDS'
+    ],
+    correct: 'ECS'
+  }
 ];
-const correct = 'ニンテンドーDS';
 
-document.getElementById('js-question').textContent = question;
+
+const quizeLength = quize.length;
+let quizeIndex = 0;
+
+
+//最後、questionの表示を変更
+document.getElementById('js-question').textContent = quize[quizeIndex].question;
 
 //問題分の記述をリファクタリング
 const $button = document.getElementsByTagName('button')
+const buttonLength = $button.length;
 //クイズの問題文、選択肢を定義
 const setupQuize = () => {
   let buttonIndex = 0;
-  let buttonLength = $button.length;
   while(buttonIndex < buttonLength){
     //ここに命令
-    $button[buttonIndex].textContent = answer[buttonIndex];  
+    $button[buttonIndex].textContent = quize[quizeIndex].answer[buttonIndex];  
     buttonIndex++;
   }
 }
@@ -25,16 +53,26 @@ const setupQuize = () => {
 setupQuize();
 
 const clickHandler = (e) => {
-  if(correct === e.target.textContent){
+  if(quize[quizeIndex].correct === e.target.textContent){
     window.alert('正解！');
   } else {
     window.alert('不正解！');
   }
+
+  quizeIndex++;
+
+  if(quizeIndex < quizeLength){
+    //問題数があればこちらを実行
+    setupQuize();
+  } else {
+    //問題数がもうなければこちらを実行
+    window.alert('終了！');
+  }
+
 };
 
 //ボタンをクリックしたら正誤判定
 let handleIndex = 0
-const buttonLength = $button.length;
 while(handleIndex < buttonLength){
   $button[handleIndex].addEventListener('click', (e) => {
   clickHandler(e);
