@@ -11,16 +11,18 @@ document.getElementById('js-question').textContent = question;
 
 //問題分の記述をリファクタリング
 const $button = document.getElementsByTagName('button')
-//定数の文字列をHTMLに反映させる
-
-
-let buttonIndex = 0;
-let buttonLength = $button.length;
-while(buttonIndex < buttonLength){
-  //ここに命令
-  $button[buttonIndex].textContent = answer[buttonIndex];  
-  buttonIndex++;
+//クイズの問題文、選択肢を定義
+const setupQuize = () => {
+  let buttonIndex = 0;
+  let buttonLength = $button.length;
+  while(buttonIndex < buttonLength){
+    //ここに命令
+    $button[buttonIndex].textContent = answer[buttonIndex];  
+    buttonIndex++;
+  }
 }
+
+setupQuize();
 
 //ボタンをクリックしたら正誤判定
 $button[0].addEventListener('click', () => {
