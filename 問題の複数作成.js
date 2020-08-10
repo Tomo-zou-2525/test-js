@@ -32,7 +32,7 @@ const quize = [
 
 const quizeLength = quize.length;
 let quizeIndex = 0;
-let score = 0;
+
 
 //最後、questionの表示を変更
 document.getElementById('js-question').textContent = quize[quizeIndex].question;
@@ -55,7 +55,6 @@ setupQuize();
 const clickHandler = (e) => {
   if(quize[quizeIndex].correct === e.target.textContent){
     window.alert('正解！');
-    score++;
   } else {
     window.alert('不正解！');
   }
@@ -67,7 +66,7 @@ const clickHandler = (e) => {
     setupQuize();
   } else {
     //問題数がもうなければこちらを実行
-    window.alert('終了！ あなたの正解数は' + score + '/' + quizeLength + 'です！');
+    window.alert('終了！');
   }
 
 };
