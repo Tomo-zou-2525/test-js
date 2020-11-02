@@ -8,18 +8,19 @@ document.getElementById("js-question").textContent = question;
 
 const $button = document.getElementsByTagName("button");
 
-/* ボタンに回答文を表示させる
+/*
+// ボタンに回答文を表示させる
  $button[0].textContent = answers[0];
  $button[1].textContent = answers[1];
  $button[2].textContent = answers[2];
  $button[3].textContent = answers[3];
-*/
 
-/*リファクタリング後
+
+// リファクタリング後
   24_ 変数buttonIndexを設定・0を代入し、現在の問題数とインデックス番号の取得に使用する
   また、各変数の引数に使用して、現在のインデックス番号として使用
 
-  25_変数buttonLengthを設定・$buttonに代入されているdocumentgetElementsByTagName("button");の中身・いわゆるclass(button)の数を取得し、while文の条件式である変化しきるまでの比較対象として使用
+  25_変数buttonLengthを設定・$buttonに代入されているdocument.getElementsByTagName("button");の中身・いわゆるclass(button)の数を取得し、while文の条件式である変化しきるまでの比較対象として使用
 */
 let buttonIndex = 0;
 let buttonLength = $button.length;
